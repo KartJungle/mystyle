@@ -76,6 +76,14 @@
     </div>
 </section>
 
+<style>
+    .warning {color: #ffc600;
+                                opacity: 0.1;
+                                -moz-transition:opacity .5s linear;
+                          }
+
+</style>
+
 <section class="signup" id="sign-up">
     <div class="container">
         <div class="row">
@@ -114,18 +122,7 @@
                             <input type="radio" name="gender" value="F" id="female" />Female
                         </label>
                         <br />
-                         <style>
-                        #error {
-                                margin: 8px;
-                                padding: 8px;
-                                background: rgb(242, 222, 222) none repeat scroll 0% 0%;
-                                border-radius: 4px;
-                                }
-                        </style>    
-                        <div id="error">
-                            
-                        </div>
-
+                      
                         <span class="help-block">By clicking Create my account, you agree to our Terms and that you have read our Data Use Policy, including our Cookie Use.</span>
                         <button class="btn btn-lg btn-primary btn-block" type="submit">Create my account</button>
                     </form>

@@ -76,7 +76,7 @@
     <script src="vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
     <!-- Theme JavaScript -->
     <script src="js/creative.min.js"></script>
-     <script>
+      <script>
         
 
 
@@ -93,7 +93,8 @@
             else {
                 
                 if(!$('#firstnameerror').length)
-                            $("#error").append('<div id="'+$(this).attr('id')+'error"'+' class="alert-danger">Frist name must be of 3 char</div>');
+                                showError('firstname',"Frist name must be of 3 char");
+                    //      $("#error").append('<div id="'+$(this).attr('id')+'error"'+' class="alert-danger">Frist name must be of 3 char</div>');
                             
                 }
         });
@@ -110,8 +111,8 @@
             else {
                 
                 if(!$('#lastnameerror').length)
-                            $("#error").append('<div id="'+$(this).attr('id')+'error"'+' class="alert-danger">Last name must be of 3 char</div>');
-                   
+                            //$("#"+this.id).append('<div id="'+$(this).attr('id')+'error"'+' class="alert-danger">Last name must be of 3 char</div>');
+                                showError('lastname',"Last name must be of 3 char");
                 }
 
         });
@@ -132,7 +133,7 @@
                 else showError('password','Password must be greater than 6 char');
 
                 if(!verifyPassword())
-                    showError('cnfpassword','no match');
+                    showError('cnfpassword','Password are not matching');
 
             });
 
@@ -140,7 +141,7 @@
 
                 if(verifyPassword())
                     removeError('cnfpassword');
-                else showError('cnfpassword','Password not matches');
+                else showError('cnfpassword','Password are not matching');
             });
 
             $('#dob').on('input',function(e){
@@ -164,13 +165,29 @@
               return regex.test(email);
             }
 
-            function showError(id,message)
+            /*function showError(id,message)
             {
                 
                 if(!$('#'+id+"error").length)
                             $("#error").append('<div id="'+id+'error"'+' class="alert-danger">'+message+'</div>');
                   
+            }*/
+
+            function showError(id,message)
+            {
+                
+                if(!$('#'+id+"error").length)
+                        {   $("#"+id).after('<p id="'+id+'error"'+' class="warning">'+"&#187 "+message+'</p>');
+                                $("#"+id+"error").hide();
+                                $("#"+id+"error").css('opacity',1);
+                                $("#"+id+"error").show("normal");
+                                
+
+
+                   }    
+                  
             }
+
             function removeError(id)
             {
                 
