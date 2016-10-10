@@ -108,7 +108,7 @@
                         
                         <label>Gender : </label>
                         <label class="radio-inline">
-                            <input type="radio" name="gender" value="M" id="male" />Male
+                            <input type="radio" name="gender" value="M" id="male" checked="checked" />Male
                         </label>
                         <label class="radio-inline">
                             <input type="radio" name="gender" value="F" id="female" />Female
