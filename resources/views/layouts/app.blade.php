@@ -65,6 +65,17 @@
         </div>
         <!-- /.container-fluid -->
     </nav>
+    @if (count($errors) > 0)
+        <div class="alert alert-danger alert-dismissable" style="position:fixed;width:440px;z-index:90;right: 10px;top: 60px;">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <strong>Whoops!</strong> There were some problems with your input.<br><br>
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
     @yield("content");
     <!-- jQuery -->
     <script src="vendor/jquery/jquery.min.js"></script>
@@ -77,39 +88,39 @@
     <!-- Theme JavaScript -->
     <script src="js/creative.min.js"></script>
       <script>
-        
+
 
 
 
          $('#firstname').on('input',function(e){
             if(this.value.length>3)
-                   { 
-                   
+                   {
+
                     if($("#"+this.id+"error").length)
                         $("#firstnameerror").remove();
-                        
+
 
                     }
             else {
-                
+
                 if(!$('#firstnameerror').length)
                                 showError('firstname',"Frist name must be of 3 char");
                     //      $("#error").append('<div id="'+$(this).attr('id')+'error"'+' class="alert-danger">Frist name must be of 3 char</div>');
-                            
+
                 }
         });
 
         $("#lastname").on('input',function(e){
 
             if(this.value.length>3)
-                   { 
-                   
+                   {
+
                     if($("#"+this.id+"error").length)
-                        $("#lastnameerror").remove();   
+                        $("#lastnameerror").remove();
 
                     }
             else {
-                
+
                 if(!$('#lastnameerror').length)
                             //$("#"+this.id).append('<div id="'+$(this).attr('id')+'error"'+' class="alert-danger">Last name must be of 3 char</div>');
                                 showError('lastname',"Last name must be of 3 char");
@@ -154,10 +165,10 @@
 
             function verifyPassword()
             {
-                
+
 
                 return document.getElementById('password').value == document.getElementById('cnfpassword').value;
-                    
+
             }
 
             function isEmail(email) {
@@ -167,32 +178,32 @@
 
             /*function showError(id,message)
             {
-                
+
                 if(!$('#'+id+"error").length)
                             $("#error").append('<div id="'+id+'error"'+' class="alert-danger">'+message+'</div>');
-                  
+
             }*/
 
             function showError(id,message)
             {
-                
+
                 if(!$('#'+id+"error").length)
                         {   $("#"+id).after('<p id="'+id+'error"'+' class="warning">'+"&#187 "+message+'</p>');
                                 $("#"+id+"error").hide();
                                 $("#"+id+"error").css('opacity',1);
                                 $("#"+id+"error").show("normal");
-                                
 
 
-                   }    
-                  
+
+                   }
+
             }
 
             function removeError(id)
             {
-                
+
                 if($("#"+id+"error").length)
-                        $("#"+id+"error").remove(); 
+                        $("#"+id+"error").remove();
             }
 
             function checkIfValid()
@@ -203,20 +214,20 @@
                     $("#password").val().length >5 &&
                     isEmail($("#email").val())    &&
                     verifyPassword() &&
-                    parseInt($('#dob').val()) >0 
+                    parseInt($('#dob').val()) >0
 
                     )
                     {   console.log("success");
                         removeError('submit');
                     return true;
                 }
-                else { 
+                else {
                     console.log("fail");
                     showError('submit','Please Check all the fields');
                     return false;
                 }
 
-                
+
             }
 
     </script>
