@@ -94,7 +94,7 @@
 
             </div>
             <div class="col-sm-6">
-                <form class="form" role="form" method="POST" action="{{ url('/register') }}" onsubmit="retrun checkIfValid();">
+                <form class="form" role="form" method="POST" action="{{ url('/register') }}" id="signupform">
                     {{ csrf_field() }}
                         <div class="row">
                             <div class="col-xs-6 col-md-6">

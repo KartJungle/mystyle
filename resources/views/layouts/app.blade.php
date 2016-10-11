@@ -219,6 +219,15 @@
                 
             }
 
+         $("#signupform").submit(function() {
+             if (checkIfValid()) {
+                 return true;
+             }
+             else {
+                 return false;
+             }
+         });
+
     </script>
 </body>
 </html>
