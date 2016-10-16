@@ -4,9 +4,60 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "c284a9c122da36c99a8b6597bdce7aa6",
-    "content-hash": "8b1485987e7c5949da82435d403e52e8",
+    "hash": "870212b3bcbfe3194703e0674b88ac34",
+    "content-hash": "426989f87a44c96653e0d1dbdf6e549a",
     "packages": [
+        {
+            "name": "atbox/invi",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Atbox/invi-l5.git",
+                "reference": "61ca786e18e2869b503785e5b0cf2cad1f51c843"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Atbox/invi-l5/zipball/61ca786e18e2869b503785e5b0cf2cad1f51c843",
+                "reference": "61ca786e18e2869b503785e5b0cf2cad1f51c843",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "~5",
+                "php": ">=5.3.0"
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "src/migrations"
+                ],
+                "psr-0": {
+                    "Atbox\\Invi\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Atbox",
+                    "email": "info@atbox.io",
+                    "role": "Publisher"
+                },
+                {
+                    "name": "Sajjad Rad",
+                    "email": "sajjad.273@gmail.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "A simple invitation system api for laravel 5",
+            "keywords": [
+                "Invitation",
+                "Invite",
+                "laravel"
+            ],
+            "time": "2016-04-11 16:18:46"
+        },
         {
             "name": "classpreloader/classpreloader",
             "version": "3.0.0",
@@ -438,16 +489,16 @@
         },
         {
             "name": "league/flysystem",
-            "version": "1.0.27",
+            "version": "1.0.28",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thephpleague/flysystem.git",
-                "reference": "50e2045ed70a7e75a5e30bc3662904f3b67af8a9"
+                "reference": "a9663643ff2d16d7f66ed1e0d3212c5491bc9044"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/50e2045ed70a7e75a5e30bc3662904f3b67af8a9",
-                "reference": "50e2045ed70a7e75a5e30bc3662904f3b67af8a9",
+                "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/a9663643ff2d16d7f66ed1e0d3212c5491bc9044",
+                "reference": "a9663643ff2d16d7f66ed1e0d3212c5491bc9044",
                 "shasum": ""
             },
             "require": {
@@ -517,7 +568,7 @@
                 "sftp",
                 "storage"
             ],
-            "time": "2016-08-10 08:55:11"
+            "time": "2016-10-07 12:20:37"
         },
         {
             "name": "monolog/monolog",
@@ -789,16 +840,16 @@
         },
         {
             "name": "psr/log",
-            "version": "1.0.1",
+            "version": "1.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-fig/log.git",
-                "reference": "5277094ed527a1c4477177d102fe4c53551953e0"
+                "reference": "4ebe3a8bf773a19edfe0a84b6585ba3d401b724d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/php-fig/log/zipball/5277094ed527a1c4477177d102fe4c53551953e0",
-                "reference": "5277094ed527a1c4477177d102fe4c53551953e0",
+                "url": "https://api.github.com/repos/php-fig/log/zipball/4ebe3a8bf773a19edfe0a84b6585ba3d401b724d",
+                "reference": "4ebe3a8bf773a19edfe0a84b6585ba3d401b724d",
                 "shasum": ""
             },
             "require": {
@@ -832,7 +883,7 @@
                 "psr",
                 "psr-3"
             ],
-            "time": "2016-09-19 16:02:08"
+            "time": "2016-10-10 12:19:37"
         },
         {
             "name": "psy/psysh",
@@ -3164,7 +3215,9 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "atbox/invi": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {

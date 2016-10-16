@@ -96,6 +96,13 @@
             <div class="col-sm-6">
                 <form class="form" role="form" method="POST" action="{{ url('/register') }}" id="signupform">
                     {{ csrf_field() }}
+                    
+                    <div class="row">
+                        <div class="container-fluid">
+                            <input type="text" value="" name="invite_code" class="form-control input-lg" id="invite_code" placeholder="Invitation Code" />
+                        </div>
+                    </div>
+
                         <div class="row">
                             <div class="col-xs-6 col-md-6">
                                 <input type="text" name="firstname" value="" class="form-control input-lg" placeholder="First Name" id="firstname" />
@@ -104,6 +111,7 @@
                                 <input type="text" name="lastname" value="" class="form-control input-lg" placeholder="Last Name" id="lastname" />
                             </div>
                         </div>
+
                         <input type="text" name="email" value="" class="form-control input-lg" placeholder="Your Email" id="email" />
                         <input type="password" name="password" value="" class="form-control input-lg" placeholder="Password" id="password" />
                         <input type="password" name="password_confirmation" value="" class="form-control input-lg" placeholder="Confirm Password" id="cnfpassword" />
@@ -113,7 +121,7 @@
                                 <input type="date" value="" name="dob" class="form-control input-lg" id="dob" />
                             </div>
                         </div>
-                        
+
                         <label>Gender : </label>
                         <label class="radio-inline">
                             <input type="radio" name="gender" value="M" id="male" checked="checked" />Male
@@ -122,7 +130,7 @@
                             <input type="radio" name="gender" value="F" id="female" />Female
                         </label>
                         <br />
-                      
+
                         <span class="help-block">By clicking Create my account, you agree to our Terms and that you have read our Data Use Policy, including our Cookie Use.</span>
                         <button class="btn btn-lg btn-primary btn-block" type="submit">Create my account</button>
                     </form>
@@ -143,10 +151,10 @@
             <div class="col-sm-6">
                 <form class="form" role="form">
                     {{ csrf_field() }}
-                        
+
                         <input type="text" name="email" value="" class="form-control input-lg" placeholder="Your Email" id="email" />
                         <input type="password" name="password" value="" class="form-control input-lg" placeholder="Password" id="password" />
-    
+
                          <a href="#about" class="btn btn-primary btn-xl page-scroll">Sign In</a>
                          <a href="#signup" class="btn btn-primary btn-xl page-scroll">Sign up</a>
                     </form>
@@ -154,7 +162,7 @@
         </div>
     </div>
     </div>
-           
+
     </div>
     </div>
 </section>

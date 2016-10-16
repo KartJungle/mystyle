@@ -7,6 +7,7 @@ use Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
+use Invi;
 
 class AuthController extends Controller
 {
@@ -48,7 +49,7 @@ class AuthController extends Controller
      */
     protected function validator(array $data)
     {
-		
+
         return Validator::make($data, [
             'firstname' => 'required|max:255',
 			'lastname' => 'required|max:255',
@@ -56,6 +57,7 @@ class AuthController extends Controller
             'password' => 'required|min:6|confirmed',
 			'dob' => 'required|date',
 			'gender' => 'required|in:M,F',
+      'invite_code' => 'required|max:100'
         ]);
     }
 
@@ -68,12 +70,41 @@ class AuthController extends Controller
     protected function create(array $data)
     {
 		$name = $data['firstname']." ".$data['lastname'];
-        return User::create([
-            'name' => $name,
-            'email' => $data['email'],
-            'password' => bcrypt($data['password']),
-			'gender' => $data['gender'],
-			'dob' => $data['dob'],
-        ]);
+
+    dd($data);
+    //Check if Invited.
+    if(Invi::check($data['invite_code'],$data['email']))
+    {
+      Invi::used($data['invite_code'],$data['email']);
+
+      // Register the user.
+      return User::create([
+          'name' => $name,
+          'email' => $data['email'],
+          'password' => bcrypt($data['password']),
+          'gender' => $data['gender'],
+          'dob' => $data['dob'],
+      ]);
     }
+    // Invalid something
+    else
+    {
+      switch (Invi::check($data['invite_code'],$data['email']))
+      {
+        case 'Deactive':
+          # code...
+          break;
+        case 'Used':
+          # code...
+          break;
+        case 'Not Exist':
+          # code...
+          break;
+        default:
+          # code...
+          break;
+      }
+    }
+
+  }
 }
