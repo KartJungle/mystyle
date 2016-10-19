@@ -18,3 +18,7 @@ Route::get('/', function () {
 Route::auth();
 
 Route::get('/mystyle', 'HomeController@index');
+
+Route::get('/hello', function(){
+   return Invi::generate("example@domain.com","2 day",True);
+});

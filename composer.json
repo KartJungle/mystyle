@@ -7,7 +7,9 @@
     "require": {
         "php": ">=5.5.9",
         "laravel/framework": "5.2.*",
-        "atbox/invi": "dev-master"
+        "atbox/invi": "dev-master",
+        "guzzlehttp/guzzle": "~5.3|~6.0",
+        "junaidnasir/larainvite": "^0.1.7"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

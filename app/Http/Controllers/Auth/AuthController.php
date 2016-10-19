@@ -7,7 +7,7 @@ use Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
-use Invi;
+use Invite;
 
 class AuthController extends Controller
 {
@@ -73,31 +73,35 @@ class AuthController extends Controller
 
     dd($data);
     //Check if Invited.
-    if(Invi::check($data['invite_code'],$data['email']))
+    if(Invite::isAllowed($data['invite_code'],$data['email']))
     {
-      Invi::used($data['invite_code'],$data['email']);
+      $invitation = Invite::get($code); //retrieve invitation modal
 
-      // Register the user.
-      return User::create([
-          'name' => $name,
-          'email' => $data['email'],
-          'password' => bcrypt($data['password']),
-          'gender' => $data['gender'],
-          'dob' => $data['dob'],
-      ]);
+        // Register the user.
+        Invite::consume($data['invite_code']);
+        return User::create([
+            'name' => $name,
+            'email' => $data['email'],
+            'password' => bcrypt($data['password']),
+            'gender' => $data['gender'],
+            'dob' => $data['dob'],
+        ]);
     }
-    // Invalid something
+    // either refCode is inavalid, or provided email was not invited against this refCode
     else
     {
-      switch (Invi::check($data['invite_code'],$data['email']))
+      switch (Invite::status($data['invite_code']))
       {
-        case 'Deactive':
+        case 'pending':
           # code...
           break;
-        case 'Used':
+        case 'successful':
           # code...
           break;
-        case 'Not Exist':
+        case 'canceled':
+          # code...
+          break;
+        case 'expired':
           # code...
           break;
         default:
