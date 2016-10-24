@@ -17,6 +17,8 @@
     <link href="vendor/magnific-popup/magnific-popup.css" rel="stylesheet">
     <!-- Theme CSS -->
     <link href="css/creative.css" rel="stylesheet">
+    <link href="css/app.css" rel="stylesheet">
+
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -78,7 +80,7 @@
     @endif
     @yield("content");
     <!-- jQuery -->
-    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="js/jquery-3.1.1.min.js"></script>
     <!-- Bootstrap Core JavaScript -->
     <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
     <!-- Plugin JavaScript -->
@@ -87,158 +89,7 @@
     <script src="vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
     <!-- Theme JavaScript -->
     <script src="js/creative.min.js"></script>
-      <script>
-
-
-
-
-         $('#firstname').on('input',function(e){
-            if(this.value.length>3)
-                   {
-
-                    if($("#"+this.id+"error").length)
-                        $("#firstnameerror").remove();
-
-
-                    }
-            else {
-
-                if(!$('#firstnameerror').length)
-                                showError('firstname',"Frist name must be of 3 char");
-                    //      $("#error").append('<div id="'+$(this).attr('id')+'error"'+' class="alert-danger">Frist name must be of 3 char</div>');
-
-                }
-        });
-
-        $("#lastname").on('input',function(e){
-
-            if(this.value.length>3)
-                   {
-
-                    if($("#"+this.id+"error").length)
-                        $("#lastnameerror").remove();
-
-                    }
-            else {
-
-                if(!$('#lastnameerror').length)
-                            //$("#"+this.id).append('<div id="'+$(this).attr('id')+'error"'+' class="alert-danger">Last name must be of 3 char</div>');
-                                showError('lastname',"Last name must be of 3 char");
-                }
-
-        });
-
-         $("#email").on('input',function(e){
-
-             if (!isEmail(this.value)){
-
-                showError('email','This is not a Valid Email');
-                }
-                else removeError('email');
-
-            });
-
-            $('#password').on('input',function(e){
-                if(this.value.length >6)
-                    removeError('password');
-                else showError('password','Password must be greater than 6 char');
-
-                if(!verifyPassword())
-                    showError('cnfpassword','Password are not matching');
-
-            });
-
-            $('#cnfpassword').on('input',function(e){
-
-                if(verifyPassword())
-                    removeError('cnfpassword');
-                else showError('cnfpassword','Password are not matching');
-            });
-
-            $('#dob').on('input',function(e){
-                if(this.value == 0 || this.value <0)
-                    showError('dob',"That is not a Valid Age");
-                else removeError('dob');
-
-            });
-
-
-            function verifyPassword()
-            {
-
-
-                return document.getElementById('password').value == document.getElementById('cnfpassword').value;
-
-            }
-
-            function isEmail(email) {
-              var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
-              return regex.test(email);
-            }
-
-            /*function showError(id,message)
-            {
-
-                if(!$('#'+id+"error").length)
-                            $("#error").append('<div id="'+id+'error"'+' class="alert-danger">'+message+'</div>');
-
-            }*/
-
-            function showError(id,message)
-            {
-
-                if(!$('#'+id+"error").length)
-                        {   $("#"+id).after('<p id="'+id+'error"'+' class="warning">'+"&#187 "+message+'</p>');
-                                $("#"+id+"error").hide();
-                                $("#"+id+"error").css('opacity',1);
-                                $("#"+id+"error").show("normal");
-
-
-
-                   }
-
-            }
-
-            function removeError(id)
-            {
-
-                if($("#"+id+"error").length)
-                        $("#"+id+"error").remove();
-            }
-
-            function checkIfValid()
-            {
-                if($("#firstname").val().length >2 &&
-                    $("#lastname").val().length >2 &&
-                    isEmail($("#email").val())     &&
-                    $("#password").val().length >5 &&
-                    isEmail($("#email").val())    &&
-                    verifyPassword() &&
-                    parseInt($('#dob').val()) >0
-
-                    )
-                    {   console.log("success");
-                        removeError('submit');
-                    return true;
-                }
-                else {
-                    console.log("fail");
-                    showError('submit','Please Check all the fields');
-                    return false;
-                }
-
-
-            }
-
-         $("#signupform").submit(function() {
-             if (checkIfValid()) {
-                 return true;
-             }
-             else {
-                 return false;
-             }
-         });
-
-    </script>
+    <!-- Parsley Validation Plugin -->
+    <script src="js/parsley.min.js"></script>
 </body>
 </html>

@@ -46,14 +46,14 @@
         <div class="row">
             <div class="col-lg-3 col-md-6 text-center">
                 <div class="service-box">
-                    <i class="fa fa-4x fa-bicycle text-primary sr-icons"></i>
+                    <i class="fa fa-4x fa-bicycle text-warning sr-icons"></i>
                     <h3>Casual Days</h3>
                     <p class="text-muted">Just Going Out for day? Remember to wear latest trends</p>
                 </div>
             </div>
             <div class="col-lg-3 col-md-6 text-center">
                 <div class="service-box">
-                    <i class="fa fa-4x  fa-black-tie text-primary sr-icons"></i>
+                    <i class="fa fa-4x  fa-black-tie text-info sr-icons"></i>
                     <h3>Party</h3>
                     <p class="text-muted">In the Party, Get best outfits. Skip the list on shopping sites. we are here</p>
                 </div>
@@ -67,7 +67,7 @@
             </div>
             <div class="col-lg-3 col-md-6 text-center">
                 <div class="service-box">
-                    <i class="fa fa-4x fa-empire text-primary sr-icons"></i>
+                    <i class="fa fa-4x fa-empire text-success sr-icons"></i>
                     <h3>Made for Style</h3>
                     <p class="text-muted">If you have any questions about styling, we are just a click away</p>
                 </div>
@@ -94,40 +94,40 @@
 
             </div>
             <div class="col-sm-6">
-                <form class="form" role="form" method="POST" action="{{ url('/register') }}" id="signupform">
+                <form class="form" role="form" method="POST" action="{{ url('/register') }}" id="signupform" data-parsley-validate>
                     {{ csrf_field() }}
                     
                     <div class="row">
                         <div class="container-fluid">
-                            <input type="text" value="" name="invite_code" class="form-control input-lg" id="invite_code" placeholder="Invitation Code" />
+                            <input type="text" value="" name="invite_code" class="form-control input-lg" id="invite_code" placeholder="Invitation Code" data-parsley-required="true" data-parsley-required-message="A valid invite code is mandatory."/>
                         </div>
                     </div>
 
                         <div class="row">
                             <div class="col-xs-6 col-md-6">
-                                <input type="text" name="firstname" value="" class="form-control input-lg" placeholder="First Name" id="firstname" />
+                                <input type="text" name="firstname" value="" class="form-control input-lg" placeholder="First Name" id="firstname" data-parsley-required="true" data-parsley-required-message="Firstname can't be left empty."/>
                             </div>
                             <div class="col-xs-6 col-md-6">
-                                <input type="text" name="lastname" value="" class="form-control input-lg" placeholder="Last Name" id="lastname" />
+                                <input type="text" name="lastname" value="" class="form-control input-lg" placeholder="Last Name" id="lastname" data-parsley-required="true" data-parsley-required-message="Lastname can't be left empty."/>
                             </div>
                         </div>
 
-                        <input type="text" name="email" value="" class="form-control input-lg" placeholder="Your Email" id="email" />
-                        <input type="password" name="password" value="" class="form-control input-lg" placeholder="Password" id="password" />
-                        <input type="password" name="password_confirmation" value="" class="form-control input-lg" placeholder="Confirm Password" id="cnfpassword" />
-                        <label>Age</label>
+                        <input type="text" name="email" value="" class="form-control input-lg" placeholder="Your Email" id="email" data-parsley-required="true" data-parsley-type="email" data-parsley-required-message="Email can't be left empty." data-parsley-type-message="A valid email address is required."/>
+                        <input type="password" name="password" value="" class="form-control input-lg" placeholder="Password" id="signup_password" data-parsley-required="true" data-parsley-minlength="6" data-parsley-required-message="Password can't be left empty." data-parsley-minlength-message="Password should be minimum 6 charaters long."/>
+                        <input type="password" name="password_confirmation" value="" class="form-control input-lg" placeholder="Confirm Password" id="cnfpassword" data-parsley-required="true" data-parsley-equalto="#signup_password" data-parsley-required-message="Password confirmation can't be left empty." data-parsley-equalto-message="Password confirmation should be same as password."/>
+                        <label>Date of Birth</label>
                         <div class="row">
                             <div class="container-fluid">
-                                <input type="date" value="" name="dob" class="form-control input-lg" id="dob" />
+                                <input type="date" value="" name="dob" class="form-control input-lg" id="dob" data-parsley-required="true" data-parsley-required-message="Date of Birth can't be left empty."/>
                             </div>
                         </div>
 
                         <label>Gender : </label>
                         <label class="radio-inline">
-                            <input type="radio" name="gender" value="M" id="male" checked="checked" />Male
+                            <input type="radio" name="gender" value="M" id="male" data-parsley-group="gender" data-parsley-required="true" data-parsley-required-message="Please specify your Gender."/>Male
                         </label>
                         <label class="radio-inline">
-                            <input type="radio" name="gender" value="F" id="female" />Female
+                            <input type="radio" name="gender" value="F" id="female" data-parsley-group="gender" data-parsley-required="true"/>Female
                         </label>
                         <br />
 
@@ -155,8 +155,8 @@
                         <input type="text" name="email" value="" class="form-control input-lg" placeholder="Your Email" id="email" />
                         <input type="password" name="password" value="" class="form-control input-lg" placeholder="Password" id="password" />
 
-                         <a href="#about" class="btn btn-primary btn-xl page-scroll">Sign In</a>
-                         <a href="#signup" class="btn btn-primary btn-xl page-scroll">Sign up</a>
+                         <a href="#about" class="btn btn-default btn-xl page-scroll">Sign In</a>
+                         <a href="#signup" class="btn btn-success btn-xl page-scroll">Sign up</a>
                     </form>
             </div>
         </div>
@@ -266,7 +266,7 @@
     <div class="container text-center">
         <div class="call-to-action">
             <h2>Android App Coming Soon . . . .</h2>
-            <a href="http://startbootstrap.com/template-overviews/creative/" class="btn btn-default btn-xl sr-button" disabled><strike>Download Now!</strike></a>
+            <a href="#" class="btn btn-default btn-xl sr-button" disabled><strike>Download Now!</strike></a>
         </div>
     </div>
 </aside>

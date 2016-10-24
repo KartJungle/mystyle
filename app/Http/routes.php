@@ -20,5 +20,5 @@ Route::auth();
 Route::get('/mystyle', 'HomeController@index');
 
 Route::get('/hello', function(){
-   return Invi::generate("example@domain.com","2 day",True);
+   return Invite::invite('email@address.com', 1, '2016-12-31 10:00:00');
 });

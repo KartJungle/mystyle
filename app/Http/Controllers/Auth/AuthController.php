@@ -29,7 +29,7 @@ class AuthController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/mystyle';
+    protected $redirectTo = '/dashboard';
 
     /**
      * Create a new authentication controller instance.
@@ -52,12 +52,12 @@ class AuthController extends Controller
 
         return Validator::make($data, [
             'firstname' => 'required|max:255',
-			'lastname' => 'required|max:255',
+			      'lastname' => 'required|max:255',
             'email' => 'required|email|max:255|unique:users',
             'password' => 'required|min:6|confirmed',
-			'dob' => 'required|date',
-			'gender' => 'required|in:M,F',
-      'invite_code' => 'required|max:100'
+			      'dob' => 'required|date',
+			      'gender' => 'required|in:M,F',
+            'invite_code' => 'required|max:100'
         ]);
     }
 
@@ -72,12 +72,12 @@ class AuthController extends Controller
 		$name = $data['firstname']." ".$data['lastname'];
 
     dd($data);
-    //Check if Invited.
+    // Check if Invited.
     if(Invite::isAllowed($data['invite_code'],$data['email']))
     {
       $invitation = Invite::get($code); //retrieve invitation modal
 
-        // Register the user.
+        // Register the user and consume the invite-code
         Invite::consume($data['invite_code']);
         return User::create([
             'name' => $name,
